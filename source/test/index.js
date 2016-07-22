@@ -35,3 +35,12 @@ test('Range from start to end, inclusive; with arbitrary step', (assert) => {
     assert.end();
 });
 
+test('Transform the output numbers with a transform function', (assert) => {
+    const msg = 'Transform the output numbers with a transform function';
+
+    const [...actual1] = grange(1, 3, n => n * 2);
+    const expected1 = [2, 4, 6];
+    assert.same(actual1, expected1, msg);
+
+    assert.end();
+});
