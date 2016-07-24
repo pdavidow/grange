@@ -1,6 +1,7 @@
 const _ = require('lodash');
 
-const grange = function *(start, end, {step} = {step: 1}, transform = ()=>{}) {
+const grange = function *(start, end, {step = 1, transform = n => n} = {}) {
+    console.log(start, end, step, transform);
     const values = _.range(start, end + 1, step);
     const transformedValues = values.map(transform);
 
@@ -8,7 +9,5 @@ const grange = function *(start, end, {step} = {step: 1}, transform = ()=>{}) {
         yield each;
     }
 };
-
-const [...actual1] = grange(1, 3, {step: 1}, n => n * 2);
 
 module.exports = grange;
