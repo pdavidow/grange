@@ -1,4 +1,4 @@
-// babel-node index.js
+const _ = require('lodash');
 
 const test = require('tape');
 const grange = require('../grange');
@@ -54,6 +54,17 @@ test('Reverse the range by passing a larger value into the start position', (ass
 
     const [...actual1] = grange(3, 1);
     const expected1 = [3, 2, 1];
+    assert.same(actual1, expected1, msg);
+
+    assert.end();
+});
+
+test('Create recurring loops', (assert) => {
+    const msg = 'loop';
+
+    const loopGen = grange(1, 3, {isLoop: true});
+    const actual1 = _.range(0, 7 + 1).map(() => loopGen.next().value);
+    const expected1 = [1, 2, 3, 1, 2, 3, 1, 2];
     assert.same(actual1, expected1, msg);
 
     assert.end();
