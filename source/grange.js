@@ -1,6 +1,11 @@
 const _ = require('lodash');
 
 const grange = function *(start, end, {step = 1, transform = n => n, isLoop = false} = {}) {
+    if (end === undefined) {
+        end = start;
+        start = 0;
+    }
+
     const values = start <= end ?
         _.range(start, end + 1, step):
         _.rangeRight(end, start + 1, step);

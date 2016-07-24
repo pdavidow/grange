@@ -69,3 +69,13 @@ test('Create recurring loops', (assert) => {
 
     assert.end();
 });
+
+test('Start can be omitted -- defaults to 0', (assert) => {
+    const msg = 'start defaults to zero';
+
+    const [...actual1] = grange(3);
+    const expected1 = [0, 1, 2, 3];
+    assert.same(actual1, expected1, msg);
+
+    assert.end();
+});
