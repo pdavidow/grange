@@ -42,5 +42,19 @@ test('Transform the output numbers with a transform function', (assert) => {
     const expected1 = [2, 4, 6];
     assert.same(actual1, expected1, msg);
 
+    const [...actual2] = grange(1, 3, {transform: n => n * 3});
+    const expected2 = [3, 6, 9];
+    assert.same(actual2, expected2, msg);
+
+    assert.end();
+});
+
+test('Reverse the range by passing a larger value into the start position', (assert) => {
+    const msg = 'reverse range';
+
+    const [...actual1] = grange(3, 1);
+    const expected1 = [3, 2, 1];
+    assert.same(actual1, expected1, msg);
+
     assert.end();
 });
